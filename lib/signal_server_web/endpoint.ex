@@ -10,17 +10,9 @@ defmodule SignalServerWeb.Endpoint do
     signing_salt: "Y5p4+jSy"
   ]
 
-  # socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
-
-  # Serve at "/" the static files from "priv/static" directory.
-  #
-  # You should set gzip to true if you are running phx.digest
-  # when deploying your static files in production.
-  plug Plug.Static,
-    at: "/",
-    from: :signal_server,
-    gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt)
+  socket "/signals", SignalServerWeb.SignalSocket,
+    websocket: [connect_info: [session: @session_options]],
+    longpoll: false
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
