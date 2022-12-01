@@ -28,6 +28,10 @@ defmodule SignalServerWeb.SignalSocket do
     {:reply, :ok, {:text, "OK"}, state}
   end
 
+  def handle_in({_payload, _, state}) do
+    {:ok, state}
+  end
+
   @impl true
   def handle_info(_message, state) do
     {:ok, state}
